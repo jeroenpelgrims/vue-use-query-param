@@ -1,9 +1,12 @@
-NOTE: This will only work when using `vue-router`.
+IMPORTANT: This plugin has a peer dependency on `vue-router`.  
+It will only work when using `vue-router` in your Vue app.
 
 ## Features
 
 - Get & set query parameters from the URL in a typesafe way
 - Use query parameters like regular ref's
+
+Don't want to read the rest of the README? Check out the [example](TODO).
 
 ## Installing
 
@@ -46,11 +49,21 @@ app.mount("#app");
 ### Use the `useQueryParam` composable
 
 ```ts
-import { StringParam, useQueryParam } from "vue-use-query-param";
+<script setup lang="ts">
+  import { StringParam, useQueryParam } from "vue-use-query-param";
 
-// foo is a WritableComputedRef<string | null>
-// use it like any other ref
-const foo = useQueryParam("foo", StringParam);
+  // foo is a WritableComputedRef<string | null>
+  // use it like any other ref
+  const foo = useQueryParam("foo", StringParam);
+
+  foo.value = "bar";
+
+</script>
+
+<template>
+  <!-- Reactively updates -->
+  {{ foo }}
+</template>
 ```
 
 ### Non-nullable query parameters (default values)
@@ -61,7 +74,7 @@ If your query parameter should always have a value, you can set a default value 
 import { StringParam, useQueryParam, withDefault } from "vue-use-query-param";
 const foo = useQueryParam("foo", withDefault(StringParam, "bar"));
 
-// NOTE: Unfortunately the typing is not 100% correct here, since the type of foo is still `WritableComputedRef<string | null>`.
+// NOTE: Unfortunately the typing is not (yet) 100% correct here, since the type of foo is still `WritableComputedRef<string | null>`.
 ```
 
 ### Supported types
@@ -73,6 +86,20 @@ Currently only a few basic types are supported.
 - `ObjectParam`: custom Objects that will be serialized to JSON and then encoded using `encodeURIComponent`.
 - `BooleanParam`: for booleans
 - `DateParam`: for dates
+
+## Extra options
+
+### Debounce time
+
+Internally, to be able to set multiple query parameters at once, we don't update the URL immediately after every change. We use `setTimeout` to debounce the updates.  
+By default the debounce time is set to `0`, meaning it will update the URL as soon as possible.  
+If however you want to delay this more, you can set the `debounceTime` option when adding the plugin to the Vue app.
+
+```ts
+app.use(useQueryParamPlugin, { debounceTime: 100 });
+...
+const foo = useQueryParam("foo", StringParam);
+```
 
 # Credits
 
