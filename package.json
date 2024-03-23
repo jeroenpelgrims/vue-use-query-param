@@ -1,0 +1,43 @@
+{
+  "name": "vue-use-query-param",
+  "version": "0.0.0",
+  "description": "Use url query parameter like regular refs in Vue, in a typesafe way.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeroenpelgrims/TODO.git"
+  },
+  "keywords": [
+    "vue",
+    "query",
+    "params",
+    "search",
+    "serialize",
+    "deserialize"
+  ],
+  "author": "Jeroen Pelgrims",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeroenpelgrims/TODO/issues"
+  },
+  "homepage": "https://github.com/jeroenpelgrims/TODO#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "tsup": "^8.0.2",
+    "typescript": "^5",
+    "vue": "^3.4.21",
+    "vue-router": "^4"
+  },
+  "peerDependencies": {
+    "vue": "^3",
+    "vue-router": "^4"
+  }
+}

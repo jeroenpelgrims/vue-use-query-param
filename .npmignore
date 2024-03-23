@@ -1,0 +1,2 @@
+# npm uses .gitignore by default, and thus will also ignore the dist folder
+# An empty .npmignore file will reset this behavior
