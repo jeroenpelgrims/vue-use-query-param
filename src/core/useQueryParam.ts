@@ -1,7 +1,8 @@
 import { computed, inject } from "vue";
 import { LocationQuery, useRoute, useRouter } from "vue-router";
 import { ParamSerializationConfig } from "../converters";
-import { PROVIDE_KEY, ProvideInterface, QueryParamUpdate } from "../plugin";
+import { ProvideInterface, QueryParamUpdate } from "../plugin";
+import { PROVIDE_KEY } from "../plugin/config";
 
 function mergeUpdates(updates: QueryParamUpdate[]) {
   return updates.reduce((result, update) => {
