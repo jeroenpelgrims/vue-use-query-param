@@ -48,16 +48,16 @@ app.mount("#app");
 
 ### Use the `useQueryParam` composable
 
-```ts
+```tsx
 <script setup lang="ts">
-  import { StringParam, useQueryParam } from "vue-use-query-param";
+import { StringParam, useQueryParam } from "vue-use-query-param";
 
-  // foo is a WritableComputedRef<string | null>
-  // use it like any other ref
-  const foo = useQueryParam("foo", StringParam);
+// foo is a `WritableComputedRef<string | null>`, use it like any other ref
+// When setting foo, the URL will be modified, a query parameter `foo` will
+// be added or updated. (or removed if you're setting `foo` to null.)
+const foo = useQueryParam("foo", StringParam);
 
-  foo.value = "bar";
-
+foo.value = "bar";
 </script>
 
 <template>
