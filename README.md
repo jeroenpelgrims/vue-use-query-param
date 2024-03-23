@@ -6,7 +6,7 @@ It will only work when using `vue-router` in your Vue app.
 - Get & set query parameters from the URL in a typesafe way
 - Use query parameters like regular ref's
 
-Don't want to read the rest of the README? Check out the [example](TODO).
+Don't want to read the rest of the README? Check out the [example](https://stackblitz.com/~/github.com/jeroenpelgrims/vue-use-query-param-example).
 
 ## Installing
 
@@ -99,6 +99,14 @@ If however you want to delay this more, you can set the `debounceTime` option wh
 app.use(useQueryParamPlugin, { debounceTime: 100 });
 ...
 const foo = useQueryParam("foo", StringParam);
+const bar = useQueryParam("bar", StringParam);
+
+// the `foo` and `bar` query parameters in the URL won't be updated immediately, but only after 150ms.
+// (50 ms for the bar timeout + 100ms for the debounce time)
+foo.value = "fooval";
+setTimeout(() => {
+  bar.value = "barval";
+}, 50);
 ```
 
 # Credits
@@ -115,6 +123,6 @@ I'm originally a React dev and I made much use of the [use-query-params](https:/
 
 [![Ai-Gust](https://assets-global.website-files.com/631524ebcf6f3b0b4e472777/6583f4b10a91cd4e83995dc8_logo-aigust-lightbg.svg)](https://www.ai-gust.io/)
 
-The original need for this plugin came when working on a project for [Ai-Gust](https://www.ai-gust.io/). An initial implementation for this plugin was made there.  
+The original need for this plugin came when working on a project for [Ai-Gust](https://www.ai-gust.io/). An initial implementation of `useQueryParam` was made there.  
 They were so kind to let me make this into a separate npm module and make it open source for the world to enjoy.  
 I've since built on this initial implementation.
