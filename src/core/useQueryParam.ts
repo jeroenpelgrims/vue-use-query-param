@@ -1,6 +1,16 @@
-import { computed } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { computed, inject } from "vue";
+import { LocationQuery, useRoute, useRouter } from "vue-router";
 import { ParamSerializationConfig } from "../converters";
+import { PROVIDE_KEY, ProvideInterface, QueryParamUpdate } from "../plugin";
+
+function mergeUpdates(updates: QueryParamUpdate[]) {
+  return updates.reduce((result, update) => {
+    return {
+      ...result,
+      [update.name]: update.value,
+    };
+  }, {} as LocationQuery);
+}
 
 export function useQueryParam<TParam>(
   name: string,
@@ -8,20 +18,25 @@ export function useQueryParam<TParam>(
 ) {
   const router = useRouter();
   const route = useRoute();
+  const plugin = inject<ProvideInterface>(PROVIDE_KEY);
+
+  async function updateUrl(updates: QueryParamUpdate[]) {
+    const mergedUpdates = mergeUpdates(updates);
+    const mergedQuery = { ...route.query, ...mergedUpdates } as LocationQuery;
+    const nullProperties = Object.entries(mergedQuery)
+      .filter(([_, value]) => value === null)
+      .map(([key, _]) => key);
+
+    nullProperties.forEach((key) => delete mergedQuery[key]);
+
+    await router.replace({
+      query: mergedQuery,
+    });
+  }
 
   async function setQueryParam(value: TParam | null) {
     const serializedValue = serialize(value);
-    const otherKeys = Object.keys(route.query).filter((key) => key !== name);
-    const otherQueryParams = Object.fromEntries(
-      otherKeys.map((key) => [key, route.query[key]])
-    );
-
-    await router.replace({
-      query: {
-        ...otherQueryParams,
-        ...(value !== null ? { [name]: serializedValue } : {}),
-      },
-    });
+    plugin?.queueUpdate({ name, value: serializedValue }, updateUrl);
   }
 
   return computed({
