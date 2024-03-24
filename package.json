@@ -6,7 +6,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublish": "npm run build && npm run test",
     "build": "tsup",
     "test": "jest"
   },
@@ -20,7 +20,10 @@
     "params",
     "search",
     "serialize",
-    "deserialize"
+    "deserialize",
+    "url",
+    "URLSearchParams",
+    "vue-router"
   ],
   "author": "Jeroen Pelgrims",
   "license": "MIT",
