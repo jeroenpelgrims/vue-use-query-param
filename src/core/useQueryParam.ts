@@ -1,4 +1,4 @@
-import { computed, inject } from "vue";
+import { Ref, computed, inject } from "vue";
 import { LocationQuery, useRoute, useRouter } from "vue-router";
 import { ParamSerializationConfig } from "../converters";
 import { ProvideInterface, QueryParamUpdate } from "../plugin";
@@ -16,7 +16,7 @@ function mergeUpdates(updates: QueryParamUpdate[]) {
 export function useQueryParam<TParam>(
   name: string,
   { serialize, deserialize }: ParamSerializationConfig<TParam>
-) {
+): Ref<TParam> {
   const router = useRouter();
   const route = useRoute();
   const plugin = inject<ProvideInterface>(PROVIDE_KEY);

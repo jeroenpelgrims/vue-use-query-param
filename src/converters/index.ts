@@ -11,7 +11,5 @@ export type ParamSerializationConfig<TParam> = {
   serialize: (
     value: TParam | null
   ) => LocationQueryValue | LocationQueryValue[];
-  deserialize: (
-    value: LocationQueryValue | LocationQueryValue[]
-  ) => TParam | null;
+  deserialize: (value: LocationQueryValue | LocationQueryValue[]) => TParam;
 };

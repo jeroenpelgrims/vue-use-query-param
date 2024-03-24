@@ -52,7 +52,7 @@ app.mount("#app");
 <script setup lang="ts">
 import { StringParam, useQueryParam } from "vue-use-query-param";
 
-// foo is a `WritableComputedRef<string | null>`, use it like any other ref
+// foo is a `Ref<string | null>`, use it like any other ref
 // When setting foo, the URL will be modified, a query parameter `foo` will
 // be added or updated. (or removed if you're setting `foo` to null.)
 const foo = useQueryParam("foo", StringParam);
@@ -73,8 +73,6 @@ If your query parameter should always have a value, you can set a default value 
 ```ts
 import { StringParam, useQueryParam, withDefault } from "vue-use-query-param";
 const foo = useQueryParam("foo", withDefault(StringParam, "bar"));
-
-// NOTE: Unfortunately the typing is not (yet) 100% correct here, since the type of foo is still `WritableComputedRef<string | null>`.
 ```
 
 ### Supported types
