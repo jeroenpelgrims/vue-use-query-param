@@ -1,7 +1,7 @@
 import { ParamSerializationConfig } from ".";
 
 export const DateParam: ParamSerializationConfig<Date | null> = {
-  serialize: (value) => value?.toUTCString() ?? null,
+  serialize: (value) => value?.toISOString() ?? null,
   deserialize: (value) => {
     const stringValue = value as string;
     try {
