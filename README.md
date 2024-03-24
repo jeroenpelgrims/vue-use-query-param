@@ -120,8 +120,8 @@ I'm originally a React dev and I made much use of the [use-query-params](https:/
 
 # Sponsors
 
-[![Ai-Gust](https://assets-global.website-files.com/631524ebcf6f3b0b4e472777/6583f4b10a91cd4e83995dc8_logo-aigust-lightbg.svg)](https://www.ai-gust.io/)
+[![ai-Gust](https://assets-global.website-files.com/631524ebcf6f3b0b4e472777/6583f4b10a91cd4e83995dc8_logo-aigust-lightbg.svg)](https://www.ai-gust.io/)
 
-The original need for this plugin came when working on a project for [Ai-Gust](https://www.ai-gust.io/). An initial implementation of `useQueryParam` was made there.  
+The original need for this plugin came when working on a project for [ai-Gust](https://www.ai-gust.io/). An initial implementation of `useQueryParam` was made there.  
 They were so kind to let me make this into a separate npm module and make it open source for the world to enjoy.  
 I've since built on this initial implementation.
