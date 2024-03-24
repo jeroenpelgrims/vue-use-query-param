@@ -84,7 +84,8 @@ Currently only a few basic types are supported.
 - `ObjectParam`: custom Objects that will be serialized to JSON and then encoded using `encodeURIComponent`.
 - `BooleanParam`: for booleans
 - `DateParam`: for dates
-- `ArrayParam`: for arrays of the above types
+- `ArrayParam`: for arrays of the above types  
+  NOTE: Nested arrays are currently only possible using `ObjectParam`. e.g.: `ObjectParam<number[][]>()`;
 
 ## Extra options
 
