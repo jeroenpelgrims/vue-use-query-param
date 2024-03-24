@@ -48,7 +48,7 @@ app.mount("#app");
 
 ### Use the `useQueryParam` composable
 
-```tsx
+```vue
 <script setup lang="ts">
 import { StringParam, useQueryParam } from "vue-use-query-param";
 
