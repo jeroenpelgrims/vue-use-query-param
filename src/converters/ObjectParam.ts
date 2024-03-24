@@ -1,14 +1,20 @@
 import { ParamSerializationConfig } from ".";
 
-export function ObjectParam<TObject>() {
+export function ObjectParam<
+  TObject
+>(): ParamSerializationConfig<TObject | null> {
   return {
-    serialize: (value: TObject) => encodeURIComponent(JSON.stringify(value)),
-    deserialize: (value: string) => {
+    serialize: (value) =>
+      value === null ? null : encodeURIComponent(JSON.stringify(value)),
+    deserialize: (value) => {
+      if (value === null || Array.isArray(value)) {
+        return null;
+      }
       try {
         return JSON.parse(decodeURIComponent(value));
       } catch {
         return null;
       }
     },
-  } as ParamSerializationConfig<TObject>;
+  };
 }
