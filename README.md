@@ -6,7 +6,7 @@ It will only work when using `vue-router` in your Vue app.
 - Get & set query parameters from the URL in a typesafe way
 - Use query parameters like regular ref's
 
-Don't want to read the rest of the README? Check out the [example](https://stackblitz.com/~/github.com/jeroenpelgrims/vue-use-query-param-example).
+Don't want to read the rest of the README? Check out the [examples](https://stackblitz.com/~/github.com/jeroenpelgrims/vue-use-query-param-example).
 
 ## Installing
 
@@ -86,6 +86,8 @@ Currently only a few basic types are supported.
 - `DateParam`: for dates
 - `ArrayParam`: for arrays of the above types  
   NOTE: Nested arrays are currently only possible using `ObjectParam`. e.g.: `ObjectParam<number[][]>()`;
+
+For some examples on how to use these, check out [these examples](https://stackblitz.com/~/github.com/jeroenpelgrims/vue-use-query-param-example).
 
 ## Extra options
 

@@ -4,8 +4,12 @@ export function ObjectParam<
   TObject
 >(): ParamSerializationConfig<TObject | null> {
   return {
-    serialize: (value) =>
-      value === null ? null : encodeURIComponent(JSON.stringify(value)),
+    serialize: (value) => {
+      if (value === undefined || value === null || typeof value !== "object") {
+        return null;
+      }
+      return encodeURIComponent(JSON.stringify(value));
+    },
     deserialize: (value) => {
       if (value === null || Array.isArray(value)) {
         return null;
