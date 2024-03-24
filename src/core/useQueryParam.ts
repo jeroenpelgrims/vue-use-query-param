@@ -35,7 +35,7 @@ export function useQueryParam<TParam>(
     });
   }
 
-  async function setQueryParam(value: TParam | null) {
+  function setQueryParam(value: TParam | null) {
     const serializedValue = serialize(value);
     plugin?.queueUpdate({ name, value: serializedValue }, updateUrl);
   }

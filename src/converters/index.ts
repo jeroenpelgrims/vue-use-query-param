@@ -1,4 +1,7 @@
 import { LocationQueryValue } from "vue-router";
+export * from "./ArrayParam";
+export * from "./BooleanParam";
+export * from "./DateParam";
 export * from "./NumberParam";
 export * from "./ObjectParam";
 export * from "./StringParam";

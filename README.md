@@ -84,6 +84,10 @@ Currently only a few basic types are supported.
 - `ObjectParam`: custom Objects that will be serialized to JSON and then encoded using `encodeURIComponent`.
 - `BooleanParam`: for booleans
 - `DateParam`: for dates
+- `ArrayParam`: for arrays of the above types  
+  NOTE: There seems to be an issue with the typing of `ArrayParam`.  
+  The return type is incorrectly typed as `Ref<TParam[]>` instead of `Ref<TParam[] | null>`.  
+  If no query param is set, the value will be `null`. `withDefault` will work as expected.
 
 ## Extra options
 
