@@ -10,7 +10,7 @@ type DateParamOptions = {
   dateType: DateParamType;
 };
 
-function serialize(value: Date | null, options?: DateParamOptions) {
+function serialize(value: Date | undefined, options?: DateParamOptions) {
   try {
     const serializedValue = value?.toISOString();
     return options?.dateType === DateParamType.Date
@@ -28,19 +28,19 @@ function deserialize(
   const stringValue = value as string;
 
   if (stringValue === null || stringValue === undefined) {
-    return null;
+    return undefined;
   }
 
   try {
     const date = new Date(stringValue);
-    return isNaN(date.getTime()) ? null : date;
+    return isNaN(date.getTime()) ? undefined : date;
   } catch {
-    return null;
+    return undefined;
   }
 }
 
 export const dateParam: ParamSerializationConfigBuilder<
-  Date | null,
+  Date | undefined,
   DateParamOptions
 > = (options) => {
   return {

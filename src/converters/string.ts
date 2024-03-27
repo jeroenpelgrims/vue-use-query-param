@@ -1,8 +1,8 @@
 import { ParamSerializationConfigBuilder } from ".";
 
 export const stringParam: ParamSerializationConfigBuilder<
-  string | null
+  string | undefined
 > = () => ({
-  serialize: (value) => value,
-  deserialize: (value) => (value ? `${value}` : null),
+  serialize: (value) => value ?? null,
+  deserialize: (value) => (value ? `${value}` : undefined),
 });

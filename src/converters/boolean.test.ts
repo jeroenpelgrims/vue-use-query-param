@@ -11,7 +11,7 @@ describe("booleanParam", () => {
       expect(serialize(false)).toBe("false");
     });
     test("null", () => {
-      expect(serialize(null)).toBe(null);
+      expect(serialize(null as unknown as boolean)).toBe(null);
     });
     test("undefined", () => {
       const result = serialize(undefined as unknown as boolean);
@@ -30,16 +30,16 @@ describe("booleanParam", () => {
       expect(deserialize("false")).toBe(false);
     });
     test("String value", () => {
-      expect(deserialize("foo")).toBe(null);
+      expect(deserialize("foo")).toBe(undefined);
     });
     test("Number value", () => {
-      expect(deserialize(123 as unknown as string)).toBe(null);
+      expect(deserialize(123 as unknown as string)).toBe(undefined);
     });
     test("null", () => {
-      expect(deserialize(null)).toBe(null);
+      expect(deserialize(null)).toBe(undefined);
     });
     test("undefined", () => {
-      expect(deserialize(undefined as unknown as string)).toBe(null);
+      expect(deserialize(undefined as unknown as string)).toBe(undefined);
     });
   });
 });
