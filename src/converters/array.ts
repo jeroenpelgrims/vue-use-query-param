@@ -3,7 +3,7 @@ import { ParamSerializationConfig } from ".";
 
 // Slightly iffy typing with the `as` casts, but yolo.
 
-export function ArrayParam<TParam>(
+export function arrayParam<TParam>(
   elementConfig: ParamSerializationConfig<TParam>
 ): ParamSerializationConfig<NonNullable<TParam>[] | null> {
   return {

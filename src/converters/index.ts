@@ -1,10 +1,10 @@
 import { LocationQueryValue } from "vue-router";
-export * from "./ArrayParam";
-export * from "./BooleanParam";
-export * from "./DateParam";
-export * from "./NumberParam";
-export * from "./ObjectParam";
-export * from "./StringParam";
+export * from "./array";
+export * from "./boolean";
+export * from "./date";
+export * from "./number";
+export * from "./object";
+export * from "./string";
 
 // export type QueryParamDefinition<TParam> = {
 //   name: string;
@@ -16,3 +16,7 @@ export type ParamSerializationConfig<TParam> = {
   ) => LocationQueryValue | LocationQueryValue[];
   deserialize: (value: LocationQueryValue | LocationQueryValue[]) => TParam;
 };
+
+export type ParamSerializationConfigBuilder<TParam, TOptions = {}> = (
+  options?: TOptions
+) => ParamSerializationConfig<TParam>;
