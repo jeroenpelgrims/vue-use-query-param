@@ -1,8 +1,8 @@
 import { LocationQueryValue } from "vue-router";
-import { StringParam } from ".";
+import { stringParam } from "./string";
 
-describe("StringParam", () => {
-  const { serialize, deserialize } = StringParam;
+describe("stringParam", () => {
+  const { serialize, deserialize } = stringParam();
 
   describe("serialize", () => {
     test("null", () => {

@@ -1,6 +1,6 @@
 import { ParamSerializationConfig } from ".";
 
-export function ObjectParam<
+export function objectParam<
   TObject
 >(): ParamSerializationConfig<TObject | null> {
   return {

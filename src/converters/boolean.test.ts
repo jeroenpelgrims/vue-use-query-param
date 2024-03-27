@@ -1,7 +1,7 @@
-import { BooleanParam } from "./BooleanParam";
+import { booleanParam } from "./boolean";
 
-describe("BooleanParam", () => {
-  const { serialize, deserialize } = BooleanParam;
+describe("booleanParam", () => {
+  const { serialize, deserialize } = booleanParam();
 
   describe("serialize", () => {
     test("true", () => {

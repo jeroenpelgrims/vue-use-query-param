@@ -1,6 +1,8 @@
-import { ParamSerializationConfig } from ".";
+import { ParamSerializationConfigBuilder } from ".";
 
-export const NumberParam: ParamSerializationConfig<number | null> = {
+export const numberParam: ParamSerializationConfigBuilder<
+  number | null
+> = () => ({
   serialize: (value) => (Number.isFinite(value) ? `${value}` : null),
   deserialize: (value) => {
     try {
@@ -10,4 +12,4 @@ export const NumberParam: ParamSerializationConfig<number | null> = {
       return null;
     }
   },
-};
+});

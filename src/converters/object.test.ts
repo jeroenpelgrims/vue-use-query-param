@@ -1,12 +1,12 @@
-import { ObjectParam } from "./ObjectParam";
+import { objectParam } from "./object";
 
 type Person = {
   id: number;
   name: string;
 };
 
-describe("DateParam", () => {
-  const { serialize, deserialize } = ObjectParam<Person>();
+describe("objectParam", () => {
+  const { serialize, deserialize } = objectParam<Person>();
   const p: Person = { id: 1, name: "John" };
 
   describe("serialize", () => {

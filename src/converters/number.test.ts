@@ -1,7 +1,7 @@
-import { NumberParam } from "./NumberParam";
+import { numberParam } from "./number";
 
-describe("DateParam", () => {
-  const { serialize, deserialize } = NumberParam;
+describe("numberParam", () => {
+  const { serialize, deserialize } = numberParam();
 
   describe("serialize", () => {
     test("null", () => {
