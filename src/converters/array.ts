@@ -5,7 +5,7 @@ import { ParamSerializationConfig } from ".";
 
 export function arrayParam<TParam>(
   elementConfig: ParamSerializationConfig<TParam>
-): ParamSerializationConfig<NonNullable<TParam>[] | null> {
+): ParamSerializationConfig<NonNullable<TParam>[] | undefined> {
   return {
     serialize: (values) => {
       if (!values) {
@@ -15,7 +15,7 @@ export function arrayParam<TParam>(
     },
     deserialize: (values) => {
       if (!values) {
-        return null;
+        return undefined;
       }
 
       if (!Array.isArray(values)) {

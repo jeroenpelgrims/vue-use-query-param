@@ -11,7 +11,7 @@ describe("objectParam", () => {
 
   describe("serialize", () => {
     test("null", () => {
-      expect(serialize(null)).toBe(null);
+      expect(serialize(null as unknown as undefined)).toBe(null);
     });
     test("undefined", () => {
       expect(serialize(undefined as unknown as Person)).toBe(null);
@@ -29,13 +29,13 @@ describe("objectParam", () => {
   });
   describe("deserialize", () => {
     test("null", () => {
-      expect(deserialize(null)).toBe(null);
+      expect(deserialize(null)).toBe(undefined);
     });
     test("undefined", () => {
-      expect(deserialize(undefined as unknown as string)).toBe(null);
+      expect(deserialize(undefined as unknown as string)).toBe(undefined);
     });
     test("invalid value", () => {
-      expect(deserialize("invalid")).toBe(null);
+      expect(deserialize("invalid")).toBe(undefined);
     });
     test("valid value", () => {
       const serializedValue = "%7B%22id%22%3A1%2C%22name%22%3A%22John%22%7D";

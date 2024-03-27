@@ -1,15 +1,15 @@
 import { ParamSerializationConfigBuilder } from ".";
 
 export const numberParam: ParamSerializationConfigBuilder<
-  number | null
+  number | undefined
 > = () => ({
   serialize: (value) => (Number.isFinite(value) ? `${value}` : null),
   deserialize: (value) => {
     try {
       const parsedValue = Number.parseFloat(value as string);
-      return Number.isFinite(parsedValue) ? parsedValue : null;
+      return Number.isFinite(parsedValue) ? parsedValue : undefined;
     } catch {
-      return null;
+      return undefined;
     }
   },
 });

@@ -6,10 +6,10 @@ describe("arrayParam", () => {
 
   describe("serialize", () => {
     test("null", () => {
-      expect(serialize(null)).toEqual(null);
+      expect(serialize(null as unknown as [])).toEqual(null);
     });
     test("undefined", () => {
-      expect(serialize(undefined as unknown as null)).toEqual(null);
+      expect(serialize(undefined as unknown as [])).toEqual(null);
     });
     test("empty array", () => {
       expect(serialize([])).toEqual([]);
@@ -23,10 +23,10 @@ describe("arrayParam", () => {
   });
   describe("deserialize", () => {
     test("null", () => {
-      expect(deserialize(null)).toEqual(null);
+      expect(deserialize(null)).toEqual(undefined);
     });
     test("undefined", () => {
-      expect(deserialize(undefined as unknown as null)).toEqual(null);
+      expect(deserialize(undefined as unknown as null)).toEqual(undefined);
     });
     test("empty array", () => {
       expect(deserialize([])).toEqual([]);

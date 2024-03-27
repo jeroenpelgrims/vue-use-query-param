@@ -12,7 +12,7 @@ export * from "./string";
 
 export type ParamSerializationConfig<TParam> = {
   serialize: (
-    value: TParam | null
+    value: TParam | undefined
   ) => LocationQueryValue | LocationQueryValue[];
   deserialize: (value: LocationQueryValue | LocationQueryValue[]) => TParam;
 };

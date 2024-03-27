@@ -5,7 +5,7 @@ describe("dateParam", () => {
 
   describe("serialize datetime", () => {
     test("null", () => {
-      expect(serialize(null)).toBe(null);
+      expect(serialize(null as unknown as Date)).toBe(null);
     });
     test("new Date()", () => {
       const now = new Date();
@@ -23,7 +23,7 @@ describe("dateParam", () => {
     const { serialize } = dateParam({ dateType: DateParamType.Date });
 
     test("null", () => {
-      expect(serialize(null)).toBe(null);
+      expect(serialize(null as unknown as Date)).toBe(null);
     });
     test("new Date()", () => {
       const now = new Date("2021-02-03T12:34:56.789Z");
@@ -39,17 +39,17 @@ describe("dateParam", () => {
 
   describe("deserialize", () => {
     test("null", () => {
-      expect(deserialize(null)).toBe(null);
+      expect(deserialize(null)).toBe(undefined);
     });
     test("undefined", () => {
-      expect(deserialize(undefined as unknown as string)).toBe(null);
+      expect(deserialize(undefined as unknown as string)).toBe(undefined);
     });
     test("valid date", () => {
       const now = new Date();
       expect(deserialize(now.toISOString())).toEqual(now);
     });
     test("invalid date", () => {
-      expect(deserialize("invalid")).toBe(null);
+      expect(deserialize("invalid")).toBe(undefined);
     });
   });
 });

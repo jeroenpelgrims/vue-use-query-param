@@ -5,7 +5,7 @@ describe("numberParam", () => {
 
   describe("serialize", () => {
     test("null", () => {
-      expect(serialize(null)).toBe(null);
+      expect(serialize(null as unknown as number)).toBe(null);
     });
     test("undefined", () => {
       expect(serialize(undefined as unknown as number)).toBe(null);
@@ -22,10 +22,10 @@ describe("numberParam", () => {
   });
   describe("deserialize", () => {
     test("null", () => {
-      expect(deserialize(null)).toBe(null);
+      expect(deserialize(null)).toBe(undefined);
     });
     test("undefined", () => {
-      expect(deserialize(undefined as unknown as string)).toBe(null);
+      expect(deserialize(undefined as unknown as string)).toBe(undefined);
     });
     test("integer", () => {
       expect(deserialize("123")).toBe(123);
@@ -34,7 +34,7 @@ describe("numberParam", () => {
       expect(deserialize("3.1415")).toBe(3.1415);
     });
     test("String value", () => {
-      expect(deserialize("invalid")).toBe(null);
+      expect(deserialize("invalid")).toBe(undefined);
     });
   });
 });
