@@ -83,7 +83,7 @@ Currently only a few basic types are supported.
 - `numberParam`: for numbers (integers and floats)
 - `objectParam`: custom Objects that will be serialized to JSON.
 - `booleanParam`: for booleans
-- `dateParam`: for dates
+- `dateParam`: for dates and datetime
 - `arrayParam`: for arrays of the above types  
   NOTE: Nested arrays are currently only possible using `objectParam`. e.g.: `objectParam<number[][]>()`;
 

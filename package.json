@@ -9,7 +9,7 @@
     "prepublish": "npm run build && npm run test",
     "build": "tsup",
     "check": "tsc --noEmit",
-    "test": "jest",
+    "test": "jest --collectCoverage",
     "test:watch": "jest --watch"
   },
   "repository": {
