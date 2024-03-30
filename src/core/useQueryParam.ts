@@ -35,13 +35,13 @@ export function useQueryParam<TParam>(
     });
   }
 
-  function setQueryParam(value: TParam | null) {
+  function setQueryParam(value: TParam | undefined) {
     const serializedValue = serialize(value);
     plugin?.queueUpdate({ name, value: serializedValue }, updateUrl);
   }
 
   return computed({
     get: () => deserialize(route.query[name]),
-    set: (value: TParam | null) => setQueryParam(value),
+    set: (value: TParam | undefined) => setQueryParam(value),
   });
 }

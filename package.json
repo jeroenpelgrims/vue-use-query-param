@@ -8,6 +8,7 @@
   "scripts": {
     "prepublish": "npm run build && npm run test",
     "build": "tsup",
+    "check": "tsc --noEmit",
     "test": "jest",
     "test:watch": "jest --watch"
   },
