@@ -81,7 +81,7 @@ Currently only a few basic types are supported.
 
 - `stringParam`: for strings
 - `numberParam`: for numbers (integers and floats)
-- `objectParam`: custom Objects that will be serialized to JSON and then encoded using `encodeURIComponent`.
+- `objectParam`: custom Objects that will be serialized to JSON.
 - `booleanParam`: for booleans
 - `dateParam`: for dates
 - `arrayParam`: for arrays of the above types  
