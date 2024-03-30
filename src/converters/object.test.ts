@@ -23,7 +23,7 @@ describe("objectParam", () => {
       expect(serialize(3.1415 as unknown as Person)).toBe(null);
     });
     test("Object", () => {
-      const expected = encodeURIComponent(JSON.stringify(p));
+      const expected = JSON.stringify(p);
       expect(serialize(p)).toBe(expected);
     });
   });
@@ -38,7 +38,7 @@ describe("objectParam", () => {
       expect(deserialize("invalid")).toBe(undefined);
     });
     test("valid value", () => {
-      const serializedValue = "%7B%22id%22%3A1%2C%22name%22%3A%22John%22%7D";
+      const serializedValue = '{"id":1,"name":"John"}';
       const deserialized = deserialize(serializedValue);
       expect(deserialized).toEqual(p);
     });
