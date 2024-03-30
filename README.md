@@ -50,12 +50,12 @@ app.mount("#app");
 
 ```vue
 <script setup lang="ts">
-import { StringParam, useQueryParam } from "vue-use-query-param";
+import { stringParam, useQueryParam } from "vue-use-query-param";
 
-// foo is a `Ref<string | null>`, use it like any other ref
+// foo is a `Ref<string | undefined>`, use it like any other ref
 // When setting foo, the URL will be modified, a query parameter `foo` will
-// be added or updated. (or removed if you're setting `foo` to null.)
-const foo = useQueryParam("foo", StringParam);
+// be added or updated. (or removed if you're setting `foo` to undefined.)
+const foo = useQueryParam("foo", stringParam());
 
 foo.value = "bar";
 </script>
@@ -71,21 +71,21 @@ foo.value = "bar";
 If your query parameter should always have a value, you can set a default value like this:
 
 ```ts
-import { StringParam, useQueryParam, withDefault } from "vue-use-query-param";
-const foo = useQueryParam("foo", withDefault(StringParam, "bar"));
+import { stringParam, useQueryParam, withDefault } from "vue-use-query-param";
+const foo = useQueryParam("foo", withDefault(stringParam(), "bar"));
 ```
 
 ### Supported types
 
 Currently only a few basic types are supported.
 
-- `StringParam`: for strings
-- `NumberParam`: for numbers (integers and floats)
-- `ObjectParam`: custom Objects that will be serialized to JSON and then encoded using `encodeURIComponent`.
-- `BooleanParam`: for booleans
-- `DateParam`: for dates
-- `ArrayParam`: for arrays of the above types  
-  NOTE: Nested arrays are currently only possible using `ObjectParam`. e.g.: `ObjectParam<number[][]>()`;
+- `stringParam`: for strings
+- `numberParam`: for numbers (integers and floats)
+- `objectParam`: custom Objects that will be serialized to JSON and then encoded using `encodeURIComponent`.
+- `booleanParam`: for booleans
+- `dateParam`: for dates
+- `arrayParam`: for arrays of the above types  
+  NOTE: Nested arrays are currently only possible using `objectParam`. e.g.: `objectParam<number[][]>()`;
 
 For some examples on how to use these, check out [these examples](https://stackblitz.com/~/github.com/jeroenpelgrims/vue-use-query-param-example).
 
@@ -100,8 +100,8 @@ If however you want to delay this more, you can set the `debounceTime` option wh
 ```ts
 app.use(useQueryParamPlugin, { debounceTime: 100 });
 ...
-const foo = useQueryParam("foo", StringParam);
-const bar = useQueryParam("bar", StringParam);
+const foo = useQueryParam("foo", stringParam());
+const bar = useQueryParam("bar", stringParam());
 
 // the `foo` and `bar` query parameters in the URL won't be updated immediately, but only after 150ms.
 // (50 ms for the bar timeout + 100ms for the debounce time)
