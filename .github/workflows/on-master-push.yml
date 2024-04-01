@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - ci
+      - master
 
 jobs:
   test-and-build:
@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
-      - run: ls ./artifact
       - run: mv ./artifact/* .
       - uses: JS-DevTools/npm-publish@v3
         with:
