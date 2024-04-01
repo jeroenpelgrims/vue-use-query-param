@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - ci
 
 jobs:
   test-and-build:
@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
+      - run: ls
       - run: mv ./vue-use-query-param/* .
       - uses: JS-DevTools/npm-publish@v3
         with:
