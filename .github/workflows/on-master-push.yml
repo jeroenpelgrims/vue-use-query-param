@@ -1,0 +1,18 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test-and-build:
+    name: Test and build
+    uses: ./.github/workflows/test-and-build.yml
+  publish: 
+    name: Publish
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
