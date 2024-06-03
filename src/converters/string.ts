@@ -4,5 +4,7 @@ export const stringParam: ParamSerializationConfigBuilder<
   string | undefined
 > = () => ({
   serialize: (value) => value ?? null,
-  deserialize: (value) => (value ? `${value}` : undefined),
+  deserialize: (value) => value !== null && value !== undefined
+    ? `${value}`
+    : undefined
 });

@@ -28,5 +28,8 @@ describe("stringParam", () => {
     test("Number value", () => {
       expect(deserialize(123 as unknown as LocationQueryValue)).toBe("123");
     });
+    test("Empty string", () => {
+      expect(deserialize('')).toBe("");
+    });
   });
 });
