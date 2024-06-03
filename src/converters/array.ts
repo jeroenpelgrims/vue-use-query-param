@@ -14,7 +14,7 @@ export function arrayParam<TParam>(
       return values.map(elementConfig.serialize) as LocationQueryValue[];
     },
     deserialize: (values) => {
-      if (!values) {
+      if (values === null || values === undefined) {
         return undefined;
       }
 

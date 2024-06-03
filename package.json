@@ -1,6 +1,6 @@
 {
   "name": "vue-use-query-param",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Use url query parameter like regular refs in Vue, in a typesafe way.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

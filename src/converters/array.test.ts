@@ -45,5 +45,9 @@ describe("arrayParam", () => {
       const { deserialize } = arrayParam(stringParam());
       expect(deserialize("abc")).toEqual(["abc"]);
     });
+    test("non-array empty string", () => {
+      const { deserialize } = arrayParam(stringParam());
+      expect(deserialize("")).toEqual([""]);
+    });
   });
 });
