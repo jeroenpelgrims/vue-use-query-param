@@ -1,5 +1,6 @@
 import { arrayParam } from "./array";
 import { numberParam } from "./number";
+import { stringParam } from "./string";
 
 describe("arrayParam", () => {
   const { serialize, deserialize } = arrayParam(numberParam());
@@ -36,6 +37,13 @@ describe("arrayParam", () => {
     });
     test("array with multiple items", () => {
       expect(deserialize(["123", "456", "789"])).toEqual([123, 456, 789]);
+    });
+    test("non-array number", () => {
+      expect(deserialize("123")).toEqual([123]);
+    });
+    test("non-array string", () => {
+      const { deserialize } = arrayParam(stringParam());
+      expect(deserialize("abc")).toEqual(["abc"]);
     });
   });
 });
