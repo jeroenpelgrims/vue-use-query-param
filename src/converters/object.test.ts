@@ -26,6 +26,11 @@ describe("objectParam", () => {
       const expected = JSON.stringify(p);
       expect(serialize(p)).toBe(expected);
     });
+    test("Object base64", () => {
+      const { serialize } = objectParam<Person>({ encoding: "base64" });
+      const expected = btoa(JSON.stringify(p));
+      expect(serialize(p)).toBe(expected);
+    });
   });
   describe("deserialize", () => {
     test("null", () => {
@@ -44,6 +49,11 @@ describe("objectParam", () => {
     });
     test("idempotency", () => {
       expect(deserialize(serialize(p))).toEqual(p);
+
+      const base64ObjectParam = objectParam<Person>({ encoding: "base64" });
+      const serialized = base64ObjectParam.serialize(p);
+      const deserialized = base64ObjectParam.deserialize(serialized as string);
+      expect(deserialized).toEqual(p);
     });
   });
 });
