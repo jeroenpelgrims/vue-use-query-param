@@ -1,5 +1,6 @@
-IMPORTANT: This plugin has a peer dependency on `vue-router`.  
-It will only work when using `vue-router` in your Vue app.
+> [!IMPORTANT]
+> This plugin has a peer dependency on `vue-router`.  
+> It will only work when using `vue-router` in your Vue app.
 
 ## Features
 
